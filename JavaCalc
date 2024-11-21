@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean continueCalculation = true;
+
+        while (continueCalculation) {
+            try {
+                System.out.print("Enter the first number: ");
+                int num1 = scanner.nextInt();
+
+                System.out.print("Enter the second number: ");
+                int num2 = scanner.nextInt();
+
+                int sum = num1 + num2;
+                int difference = num1 - num2;
+                int product = num1 * num2;
+                int quotient = num1 / num2;
+
+                System.out.println("Sum: " + sum);
+                System.out.println("Difference: " + difference);
+                System.out.println("Product: " + product);
+                System.out.println("Quotient: " + quotient);
+
+                continueCalculation = false; // Exit the loop after successful calculation
+
+            } catch (ArithmeticException e) {
+                System.out.println("Error: Division by zero is not allowed.");
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Invalid input. Please enter numbers only.");
+                scanner.nextLine(); // Clear the invalid input from the scanner
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Invalid number format. Please enter valid numbers.");
+                scanner.nextLine(); // Clear the invalid input from the scanner
+            }
+        }
+
+        scanner.close();
+    }
+}
